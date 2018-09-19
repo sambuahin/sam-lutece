@@ -1,7 +1,7 @@
 version: '3'
 services:
     app:
-       build: ./postgis
+       build: ./docker
        container_name: dmr
        ports:
           - "8080:8080"
