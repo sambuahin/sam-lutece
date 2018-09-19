@@ -1,0 +1,21 @@
+<Context>
+        <Resource name="jdbc/portal" auth="Container" type="javax.sql.DataSource"
+                        username="postgres_app"
+                        password="postgres_app"
+                        driverClassName="org.postgresql.Driver"
+                        url="jdbc:postgresql://localhost:5432/dmr_report"
+                        initialSize="2"
+                        maxActive="20"
+                        testOnBorrow="true"
+						testWhileIdle="true"
+                        removeAbandoned="true"
+                        logAbandoned="true"
+                        removeAbandonedTimeout="300"
+          				validationQuery="SELECT 1"
+                        timeBetweenEvictionRunsMillis="3600000"
+                        maxTotal="50"
+                        removeAbandonedOnBorrow="true"
+                        removeAbandonedOnMaintenance="true"
+                />
+</Context>
+

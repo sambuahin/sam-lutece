@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Validation API server TABLETTE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/network.js" type="text/javascript"></script>
+<script src="js/base64.js" type="text/javascript"></script>
+<script src="js/sha1.js" type="text/javascript"></script>
+<style type="text/css">
+textarea,input {
+	width: 87%;
+}
+
+label {
+	display: inline-block;
+	width: 12%;
+	vertical-align: top;
+}
+</style>
+</head>
+<body>
+	<form name="a">
+		<div>
+			<label for="url">URL serveur :</label> <input type="text" value="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/ramen/API" name="url" id="url" list="urlList" />
+			<datalist id="urlList">
+				<option value="http://r57-sira-ws.apps.paris.fr/sira/rest/ramen/API">
+				<option value="http://r57-sira-ws.apps.paris.fr/sira/rest/sira/API">
+				<option value="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/ramen/API">
+				<option value="http://dev.lutece.paris.fr/sira/rest/ramen/API">
+			</datalist>
+		</div>
+		<div>
+			<label for="login">login</label> <input type="text" value="mylogin" name="login" id="login" />
+		</div>
+		<div>
+			<label for="passwd">passwd</label> <input type="text" value="monmotdepasse" name="passwd" id="passwd" />
+		</div>
+		<div>
+			<label for="privateKey">privateKey</label> <input type="text" value="TBD" name="privateKey" id="privateKey" />
+		</div>
+		<div>&nbsp;</div>
+		<div>
+			<label for="timestamp">timestamp</label> <input type="text" name="timestamp" id="timestamp" />
+		</div>
+		<div>
+			<label for="headers">headers</label> <input type="text" name=headers id="headers" />
+		</div>
+		<div>
+			<label for="request">request</label>
+			<textarea type="text" name="request" id="request" rows="4"></textarea>
+		</div>
+		<div>
+			<label>Server response (<span id="responseTime"></span>s)</label>
+			<textarea name="result" rows="8"></textarea>
+		</div>
+	</form>
+	<div>&nbsp;</div>
+	<form>
+		<input type="text" value='{"id":"1221101258","entity":"108","request":"entityHierarchy"}' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+	<form>
+		<input type="text" value='{"id":"1221101258","date":"1365067617857","entity":"142","request":"ramenFeuilleDeRoute"}' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+	<script>
+        $("button.apiTestButton").click(function()
+        {
+            a.timestamp.value = new Date().getTime();
+
+            var jsonObject = JSON.parse($(this).parent().children("input").val());
+
+            jsonObject.udid = 0;
+
+            var strAuthentToken = Network.authentToken(a.login.value, a.passwd.value, a.privateKey.value);
+            jsonObject.authentToken = strAuthentToken;
+
+            a.request.value = JSON.stringify(jsonObject);
+
+            var objHeaders = Network.getHeaders(a.privateKey.value, jsonObject);
+            a.headers.value = JSON.stringify(objHeaders);
+
+            Network.send(a.url.value, jsonObject, objHeaders, function(xml)
+            {
+                var jsonResponse = JSON.stringify(xml);
+                a.result.value = jsonResponse;
+                var end = new Date().getTime();
+                $("#responseTime").html((end-a.timestamp.value)/1000);
+            });
+        });
+    </script>
+	<div>Utiliser Chrome <a href="http://joshuamcginnis.com/2011/02/28/how-to-disable-same-origin-policy-in-chrome/" target="_blank">avec l'option --disable-web-security</a> pour authoriser les appels crossdomains.</div>
+	<div id="demain"></div>
+	<script>
+	document.getElementById("demain").innerHTML = new Date("2013-04-05 08:00").getTime();
+	</script>
+</body>
+</html>

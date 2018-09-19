@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Validation API server TABLETTE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+input {
+	width: 100%;
+}
+
+</style>
+</head>
+<body>
+	<form action="http://r57-sira-ws.apps.paris.fr/sira/rest/ramen/API" method="post">
+		<input name="jsonStream" value='{"id":"1221101258","entity":"108","request":"entityHierarchy"}'>
+		<input type="submit">
+	</form>
+	<form action="http://r57-sira-ws.apps.paris.fr/sira/rest/ramen/API" method="post">
+		<input name="jsonStream" value='{"id":"1221101258","date":"1365166944944","entity":"143","request":"ramenFeuilleDeRoute"}'>
+		<input type="submit">
+	</form>
+	<div id="now"></div>
+	<script>
+		document.getElementById("now").innerHTML = new Date().getTime();
+	</script>
+</body>
+</html>

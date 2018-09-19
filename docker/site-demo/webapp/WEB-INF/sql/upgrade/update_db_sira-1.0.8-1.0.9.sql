@@ -1,0 +1,2 @@
+INSERT INTO profile_right (profile_key, id_right) VALUES ('STANDARDISTE_DPE', 'SERVICE_FAIT_MANAGEMENT');
+INSERT INTO profile_right (profile_key, id_right) VALUES ('SAISIE_RAMEN', 'SERVICE_FAIT_MANAGEMENT');

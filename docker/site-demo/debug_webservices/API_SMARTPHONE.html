@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Validation API server SMARTPHONE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/network.js" type="text/javascript"></script>
+<script src="js/base64.js" type="text/javascript"></script>
+<script src="js/sha1.js" type="text/javascript"></script>
+<style type="text/css">
+textarea,input {
+	width: 87%;
+}
+
+label {
+	display: inline-block;
+	width: 12%;
+	vertical-align: top;
+}
+</style>
+</head>
+<body>
+	<h1>API test</h1>
+	<div>Cette page permet de tester l'api REST AlerteVoirie</div>
+	<div>
+		<b>Prerequis</b> : Utiliser Chrome <a href="http://joshuamcginnis.com/2011/02/28/how-to-disable-same-origin-policy-in-chrome/" target="_blank">avec l'option --disable-web-security</a> pour authoriser les appels crossdomains
+	</div>
+	<div>&nbsp;</div>
+	<form name="a">
+		<div>
+			<label for="url">URL serveur :</label> <input type="text" value="http://dev.lutece.paris.fr/sira-integ/rest/signalement/api" name="url" id="url" list="urlList" />
+			<datalist id="urlList">
+				<option value="http://dev.lutece.paris.fr/sira-integ/rest/signalement/api">
+				<option value="http://dev.lutece.paris.fr/sira/rest/signalement/api">
+				<option value="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api">
+				<option value="http://r57-sira-ws.apps.paris.fr/sira/rest/signalement/api">
+			</datalist>
+		</div>
+		<div>
+			<label for="login">login</label> <input type="text" value="mylogin" name="login" id="login" />
+		</div>
+		<div>
+			<label for="passwd">passwd</label> <input type="text" value="monmotdepasse" name="passwd" id="passwd" />
+		</div>
+		<div>
+			<label for="privateKey">privateKey</label> <input type="text" value="TBD" name="privateKey" id="privateKey" />
+		</div>
+		<div>&nbsp;</div>
+		<div>
+			<label for="timestamp">timestamp</label> <input type="text" name="timestamp" id="timestamp" />
+		</div>
+		<div>
+			<label for="headers">headers</label> <input type="text" name=headers id="headers" />
+		</div>
+		<div>
+			<label for="request">request</label>
+			<textarea type="text" name="request" id="request" rows="8"></textarea>
+		</div>
+		<div>
+			<label>Server response (<span id="responseTime"></span>s)</label>
+			<textarea name="result" rows="8"></textarea>
+		</div>
+	</form>
+	<div>&nbsp;</div>
+	<form>
+		<input type="text" value='[{"request":"getIncidentStats","position":{"longitude":2.367231,"latitude":48.85998}}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getIncidentById","id":"3"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getIncidentsByPosition","position":{"longitude":2.367231,"latitude":48.85998},"radius":"close"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"saveIncident","email":"toto.tutu@paris.fr","incident":{"categoryId":1001,"address":"227 rue de bercy, paris","descriptive":"un large trou au milieu de la route","priorityId":1},"position":{"latitude":48.8468545,"longitude":2.369533},"udid":"api javascript 352376050903812"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getReports"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"updateIncident","incidentLog":{"incidentId":15,"udid":"toto","status":"Invalid"}}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getUsersActivities","position": {"latitude":48.8467231,"longitude":2.369384}}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form">
+		<input type="text" value='[{"request":"changeIncident","incidentId":2,"categoryId":1001,"address":"32 avenue de christophe pirate"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getIncidentPhotos","incidentId":3}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<form name="pForm">
+		<input type="text" name="incidentId" value="1" style="width: 10%" /> <input type="file" name="imgField" style="width: 40%" />
+		<button type="button" class="apiFileTestButton">Submit photo</button>
+	</form>
+
+	<form>
+		<input type="text" value='[{"request":"getCategories","curVersion":"0.9"}]' />
+		<button type="button" class="apiTestButton">Submit query</button>
+	</form>
+
+	<script>
+        $("button.apiTestButton").click(function()
+        {
+            a.timestamp.value = new Date().getTime();
+
+            var jsonObject = JSON.parse($(this).parent().children("input").val());
+
+            jsonObject[0].udid = 0;
+
+            var strAuthentToken = Network.authentToken(a.login.value, a.passwd.value, a.privateKey.value);
+            jsonObject[0].authentToken = strAuthentToken;
+
+            a.request.value = JSON.stringify(jsonObject);
+
+            var objHeaders = Network.getHeaders(a.privateKey.value, jsonObject);
+            a.headers.value = JSON.stringify(objHeaders);
+
+            Network.send(a.url.value, jsonObject, objHeaders, function(xml)
+            {
+                var jsonResponse = JSON.stringify(xml);
+                a.result.value = jsonResponse;
+                var end = new Date().getTime();
+                $("#responseTime").html((end-a.timestamp.value)/1000);
+            });
+        });
+
+        $("button.apiFileTestButton").click(function()
+        {
+            var file = pForm.imgField.files[0];
+            var incidentId = pForm.incidentId.value;
+            Network.sendPhotoJQuery(a.url.value, file, incidentId, function(data)
+            {
+                a.result.value = JSON.stringify(data);
+            });
+        });
+    </script>
+	<div>Test R7 appli smartphone remonté ramen</div>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/ramen/getDossiersApiMobil?latitude=48.866215&longitude=2.5602264&radius=150" method="get">
+		<input type="submit">
+	</form>
+	
+</body>
+</html>
