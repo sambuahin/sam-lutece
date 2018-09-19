@@ -1,0 +1,12 @@
+<noscript>
+    <#if user?has_content>
+        <li><a href="${url_dologout}"><span class="glyphicon glyphicon-off"></span> ${i18n('mylutece.user_login_include.labelLogout')}</a></li>
+    <#else>
+        <li><a href="${url_dologin}"> S'authentifier</a></li>
+    </#if>
+</noscript> 
+
+<script src="https://moncompte.rec.apps.paris.mdp/moncompte/assets/js/banner-moncompte.js"></script>
+<script>
+$(document).ready(function(){initBanner()});
+</script>

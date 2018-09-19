@@ -1,0 +1,16 @@
+<#if config?exists>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="form-group">
+				<#if config.title?exists >
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label class="control-label" for="comment_value_${config.idTask}">  ${config.title} <#if config.mandatory>*</#if></label>
+				</div>
+				</#if>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<textarea name="comment_value_${config.idTask}" rows="4" cols="80" >${comment_value!}</textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</#if>	

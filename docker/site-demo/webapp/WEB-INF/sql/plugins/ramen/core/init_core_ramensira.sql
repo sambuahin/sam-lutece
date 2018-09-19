@@ -1,0 +1,120 @@
+INSERT INTO core_dashboard (dashboard_name, dashboard_column, dashboard_order) VALUES ('RAMEN', 3, 1);
+INSERT INTO core_feature_group (id_feature_group, feature_group_description, feature_group_label, feature_group_order)
+ VALUES ('RAMEN', 'ramen.features.group.ramen.description', 'ramen.features.group.ramen.label', 8);
+ 
+ 
+-- rights / permissions for user admin
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (948, 'super_admin', 'GESTION_DES_DOSSIERS', '*', '*');
+
+-- rôles
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('CHEF_EQUIPE', 'Chef d''équipe');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('STANDARDISTE_DPE', 'Standardiste DPE');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('CHEF_DE_DIV', 'Chef de div');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('ADJOINT_CHEF_DE_DIV', 'Adjoint chef de div');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('AUTRES_SERVICES', 'Autres services');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('PREPARATION_TOURNEE', 'Préparation tournée');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('RECHERCHE_RAMEN', 'Recherche Ramen');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('SAISIE_RAMEN', 'Saisie Ramen');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('CONSULTATION_RAMEN', 'Consultation Ramen');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('ATTACHE', 'Attaché');
+INSERT INTO core_admin_role (role_key, role_description) VALUES ('COMMUNICATEUR', 'Communicateur');
+
+
+
+--permissions
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (950, 'CHEF_EQUIPE', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (951, 'CHEF_EQUIPE', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (952, 'CHEF_EQUIPE', 'GESTION_DES_DOSSIERS', '*', 'CREATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (953, 'CHEF_EQUIPE', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (954, 'CHEF_EQUIPE', 'GESTION_DES_DOSSIERS', '*', 'FEUILLE_DE_SAISIE_ET_ROUTE');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (955, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '6', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (956, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '7', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (957, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '33', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (958, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '8', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (959, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '9', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (960, 'CHEF_EQUIPE', 'WORKFLOW_ACTION_TYPE', '31', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (961, 'ADJOINT_CHEF_DE_DIV', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (962, 'ADJOINT_CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (963, 'ADJOINT_CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (964, 'ADJOINT_CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (965, 'ADJOINT_CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (966, 'ADJOINT_CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '32', '*');
+--INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (967, 'ADJOINT_CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'SUPPRIMER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (968, 'ATTACHE', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (969, 'ATTACHE', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (970, 'ATTACHE', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+--INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (971, 'ATTACHE', 'GESTION_DES_DOSSIERS', '*', 'SUPPRIMER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (972, 'ATTACHE', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (973, 'ATTACHE', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (974, 'ATTACHE', 'WORKFLOW_ACTION_TYPE', '32', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (975, 'AUTRES_SERVICES', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (976, 'AUTRES_SERVICES', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (977, 'AUTRES_SERVICES', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (978, 'CHEF_DE_DIV', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (979, 'CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (980, 'CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+--INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (981, 'CHEF_DE_DIV', 'GESTION_DES_DOSSIERS', '*', 'SUPPRIMER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (982, 'CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (983, 'CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (984, 'CHEF_DE_DIV', 'WORKFLOW_ACTION_TYPE', '32', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (985, 'COMMUNICATEUR', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (986, 'COMMUNICATEUR', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (987, 'COMMUNICATEUR', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (988, 'COMMUNICATEUR', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (989, 'COMMUNICATEUR', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (990, 'COMMUNICATEUR', 'WORKFLOW_ACTION_TYPE', '32', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (991, 'CONSULTATION_RAMEN', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (992, 'CONSULTATION_RAMEN', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (995, 'PREPARATION_TOURNEE', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (996, 'PREPARATION_TOURNEE', 'GESTION_DES_DOSSIERS', '*', 'FEUILLE_DE_SAISIE_ET_ROUTE');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (997, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '6', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (998, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '7', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (999, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '33', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1000, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '8', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1001, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '9', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1002, 'PREPARATION_TOURNEE', 'WORKFLOW_ACTION_TYPE', '31', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1009, 'RECHERCHE_RAMEN', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1010, 'RECHERCHE_RAMEN', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1013, 'SAISIE_RAMEN', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1014, 'SAISIE_RAMEN', 'GESTION_DES_DOSSIERS', '*', 'CREATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1015, 'SAISIE_RAMEN', 'GESTION_DES_DOSSIERS', '*', 'MODIFICATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1016, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '5', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1017, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '30', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1018, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '34', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1019, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1020, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1021, 'SAISIE_RAMEN', 'WORKFLOW_ACTION_TYPE', '32', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1022, 'SAISIE_RAMEN', 'GESTION_DES_DOSSIERS', '*', 'FEUILLE_DE_SAISIE_ET_ROUTE');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1031, 'STANDARDISTE_DPE', 'WORKFLOW_STATE_TYPE', '*', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1032, 'STANDARDISTE_DPE', 'GESTION_DES_DOSSIERS', '*', 'MODIFICATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1033, 'STANDARDISTE_DPE', 'GESTION_DES_DOSSIERS', '*', 'FEUILLE_DE_SAISIE_ET_ROUTE');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1034, 'STANDARDISTE_DPE', 'GESTION_DES_DOSSIERS', '*', 'CONSULTATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1035, 'STANDARDISTE_DPE', 'GESTION_DES_DOSSIERS', '*', 'RECHERCHER_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1036, 'STANDARDISTE_DPE', 'GESTION_DES_DOSSIERS', '*', 'CREATION_DOSSIER');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1037, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '5', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1038, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '30', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1039, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '34', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1040, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '6', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1041, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '7', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1042, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '33', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1043, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '8', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1044, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '9', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1045, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '31', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1046, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '11', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1047, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '12', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1048, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '32', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1053, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '13', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1054, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '14', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1055, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '16', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1056, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '17', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1057, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '18', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1058, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '19', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1059, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '21', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1060, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '22', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1061, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '23', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1062, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '27', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1063, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '28', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1064, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '29', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1065, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '38', '*');
+INSERT INTO core_admin_role_resource (rbac_id, role_key, resource_type, resource_id, permission) VALUES (1066, 'STANDARDISTE_DPE', 'WORKFLOW_ACTION_TYPE', '39', '*');
+

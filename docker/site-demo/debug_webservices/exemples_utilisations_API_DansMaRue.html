@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input {
+	width:100%;
+}
+</style>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/network.js" type="text/javascript"></script>
+<script src="js/base64.js" type="text/javascript"></script>
+<script src="js/sha1.js" type="text/javascript"></script>
+</head>
+
+<script>
+	var mdpValue = "http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api";
+	var localValue = "http://localhost:8080/site-sira/rest/signalement/api";
+	
+	$(document).ready(function(){
+		
+		$("form").attr("action",localValue);
+		$("#action").attr("value",localValue);
+		
+		$("#action").change(function(){
+			var action = $("#action").attr("value")
+			$("form").attr("action",action);
+		});
+		
+		$("#resetMdp").click(function(){
+			$("form").attr("action",mdpValue);
+		});
+		$("#resetField").click(function(){
+			$("form").attr("action",$("#action").attr("value"));
+		});
+	});
+</script>
+<body>
+
+	<form >
+		<input id="action" type="text" value=""/>
+		<button type="button" id="resetMdp">Utiliser r57</button>
+		<button type="button" id="resetField">Utiliser input field</button>
+	</form>
+	
+	
+
+	<p>Récupère les anomalies autour d'un point</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"getIncidentStats","position":{"latitude":48.8468545,"longitude":2.369533}}]' />
+		<input type="submit">
+	</form>
+	<p>Récupère les anomalies autour d'un point</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"getIncidentsByPosition","position":{"latitude":48.8468545,"longitude":2.369533},"radius":"close"}]' />
+		<input type="submit">
+	</form>
+	<p>Récupère la nomenclature des anomalies possibles</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"getCategories","curVersion":"0.9"}]' />
+		<input type="submit">
+	</form>
+	<p>Poste une nouvelle anomalie</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"saveIncident","email":"toto.tutu@paris.fr","incident":{"categoryId":1001,"address":"227 rue de bercy, paris","descriptive":"un large trou au milieu de la route","priorityId":1},"position":{"latitude":48.8468545,"longitude":2.369533},"udid":"api javascript 352376050903812"}]' />
+		<input type="submit">
+	</form>
+	<p>Détails d'une anomalie</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"getIncidentById","id":"3"}]' />
+		<input type="submit">
+	</form>
+	
+	<p>Changer status : service fait</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"changeStatus", "answer":{"id":"97", "status":"service fait", "date_reel_action":"2014-05-12 17:05:00", "commentaire":"service fait le 12/05/2014", "id_rejet":"", "date_programmation":""}}]' />
+		<input type="submit">
+	</form>
+	
+	<p>Changer status : rejet</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"changeStatus", "answer":{"id":"97", "status":"rejet", "date_reel_action":"2014-05-12 17:05:00", "commentaire":"anomalie rejetée car située hors de notre périmètre d action", "id_rejet":"1", "date_programmation":""}}]' />
+		<input type="submit">
+	</form>
+	
+	<p>Changer status : requalification</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"changeStatus", "answer":{"id":"97", "status":"requalification", "date_reel_action":"2014-05-12 17:05:00", "commentaire":"anomalie a requalifier car informations manquantes", "id_rejet":"", "date_programmation":""}}]' />
+		<input type="submit">
+	</form>
+	
+	<p>Changer status : service programme</p>
+	<form action="http://r57-sira-ws.rec.apps.paris.fr/sira/rest/signalement/api" method="post"> 
+		<input type="text" name="jsonStream" value='[{"request":"changeStatus", "answer":{"id":"97", "status":"service programme", "date_reel_action":"2014-05-12 17:05:00", "commentaire":"Service programmé par nos équipes pour le 12/08/2014", "id_rejet":"", "date_programmation":"2014-08-12 10:00:00"}}]' />
+		<input type="submit">
+	</form>
+</body>
+</html>
