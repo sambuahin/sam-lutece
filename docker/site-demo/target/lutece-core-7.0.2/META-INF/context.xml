@@ -1,0 +1,20 @@
+<Context>
+        <Resource name="jdbc/portal" auth="Container" type="javax.sql.DataSource"
+                        username="r57_fo_app"
+                        password="r57_fo_app"
+                        driverClassName="org.postgresql.Driver"
+                        url="jdbc:postgresql://R57-BDD:5432/R57"
+                        initialSize="2"
+                        maxActive="20"
+                        testOnBorrow="true"
+                        testWhileIdle="true"
+                        removeAbandoned="true"
+                        logAbandoned="true"
+                        removeAbandonedTimeout="300"
+                        validationQuery="SELECT 1"
+                        timeBetweenEvictionRunsMillis="3600000"
+                        maxTotal="50"
+                        removeAbandonedOnBorrow="true"
+                        removeAbandonedOnMaintenance="true"
+        />
+</Context>

@@ -1,0 +1,21 @@
+update signalement_arrondissement set numero_arrondissement='1er' where id_arrondissement=1;
+update signalement_arrondissement set numero_arrondissement='2ème' where id_arrondissement=7;
+update signalement_arrondissement set numero_arrondissement='3ème' where id_arrondissement=2;
+update signalement_arrondissement set numero_arrondissement='4ème' where id_arrondissement=3;
+update signalement_arrondissement set numero_arrondissement='5ème' where id_arrondissement=4;
+update signalement_arrondissement set numero_arrondissement='6ème' where id_arrondissement=5;
+update signalement_arrondissement set numero_arrondissement='7ème' where id_arrondissement=6;
+update signalement_arrondissement set numero_arrondissement='8ème' where id_arrondissement=8;
+update signalement_arrondissement set numero_arrondissement='9ème' where id_arrondissement=9;
+update signalement_arrondissement set numero_arrondissement='10ème' where id_arrondissement=14;
+update signalement_arrondissement set numero_arrondissement='11ème' where id_arrondissement=10;
+update signalement_arrondissement set numero_arrondissement='12ème' where id_arrondissement=11;
+update signalement_arrondissement set numero_arrondissement='13ème' where id_arrondissement=12;
+update signalement_arrondissement set numero_arrondissement='14ème' where id_arrondissement=13;
+update signalement_arrondissement set numero_arrondissement='15ème' where id_arrondissement=15;
+update signalement_arrondissement set numero_arrondissement='16ème' where id_arrondissement=16;
+update signalement_arrondissement set numero_arrondissement='17ème' where id_arrondissement=17;
+update signalement_arrondissement set numero_arrondissement='18ème' where id_arrondissement=18;
+update signalement_arrondissement set numero_arrondissement='19ème' where id_arrondissement=19;
+update signalement_arrondissement set numero_arrondissement='20ème' where id_arrondissement=20;
+
